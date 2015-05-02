@@ -1,6 +1,8 @@
 blog-web README
 ==================
 
+myBlogWebApp
+
 Getting Started
 ---------------
 
