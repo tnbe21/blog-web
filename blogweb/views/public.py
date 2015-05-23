@@ -8,14 +8,15 @@ from .models import (
     MyModel
     )
 
+@view_config(route_name='home', renderer='templates/blog.pt')
+def home(request):
+    print "hello"
+    return {}
 
-@view_config(route_name='home', renderer='templates/mytemplate.pt')
-def my_view(request):
-    try:
-        one = DBSession.query(MyModel).filter(MyModel.name == 'one').first()
-    except DBAPIError:
-        return Response(conn_err_msg, content_type='text/plain', status_int=500)
-    return {'one': one, 'project': 'blog-web'}
+@view_config(route_name='article', renderer='templates/blog.pt')
+def article(request):
+    print "hello article"
+    return {}
 
 conn_err_msg = """\
 Pyramid is having a problem using your SQL database.  The problem
@@ -32,4 +33,5 @@ might be caused by one of the following things:
 After you fix the problem, please restart the Pyramid application to
 try it again.
 """
+
 

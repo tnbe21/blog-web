@@ -6,7 +6,6 @@ from .models import (
     Base
     )
 
-
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
@@ -28,12 +27,12 @@ def main(global_config, **settings):
     config.add_route('admin_home', '/rfwt4w3gtibjqhaljgalkjkl30va/admin')
 
     config.add_route('admin_users', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/users')
-    config.add_route('admin_user_edit', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/user/{id}/edit')
     config.add_route('admin_user_add', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/user/add')
+    config.add_route('admin_user_edit', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/user/{id}/edit')
 
     config.add_route('admin_articles', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/articles')
-    config.add_route('admin_article_edit', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/{id}/edit')
     config.add_route('admin_article_add', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/add')
+    config.add_route('admin_article_edit', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/{id}/edit')
 
     config.scan()
     return config.make_wsgi_app()

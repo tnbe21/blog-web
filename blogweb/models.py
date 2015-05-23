@@ -2,6 +2,7 @@ from sqlalchemy import (
     Column,
     Index,
     Integer,
+    String,
     Text,
     DateTime
     )
