@@ -5,7 +5,7 @@ from sqlalchemy.exc import DBAPIError
 
 from .models import (
     DBSession,
-    MyModel,
+    MyModel
     )
 
 
@@ -16,7 +16,6 @@ def my_view(request):
     except DBAPIError:
         return Response(conn_err_msg, content_type='text/plain', status_int=500)
     return {'one': one, 'project': 'blog-web'}
-
 
 conn_err_msg = """\
 Pyramid is having a problem using your SQL database.  The problem
