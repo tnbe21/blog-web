@@ -3,53 +3,46 @@ import transaction
 
 from pyramid import testing
 
-from .models import DBSession
+from ...models import DBSession
 
-
-class TestMyViewSuccessCondition(unittest.TestCase):
+class TestHomeSuccessCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
         from sqlalchemy import create_engine
         engine = create_engine('sqlite://')
-        from .models import (
+        from ...models import (
             Base,
-            MyModel,
             )
         DBSession.configure(bind=engine)
         Base.metadata.create_all(engine)
-        with transaction.manager:
-            model = MyModel(name='one', value=55)
-            DBSession.add(model)
 
     def tearDown(self):
         DBSession.remove()
         testing.tearDown()
 
     def test_passing_view(self):
-        from .views import my_view
+        from ...views import public
         request = testing.DummyRequest()
-        info = my_view(request)
-        self.assertEqual(info['one'].name, 'one')
-        self.assertEqual(info['project'], 'blog-web')
+        info = public.home(request)
+        self.assertEqual(info, {})
 
-
-class TestMyViewFailureCondition(unittest.TestCase):
+class TestArticleSuccessCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
         from sqlalchemy import create_engine
         engine = create_engine('sqlite://')
-        from .models import (
+        from ...models import (
             Base,
-            MyModel,
             )
         DBSession.configure(bind=engine)
+        Base.metadata.create_all(engine)
 
     def tearDown(self):
         DBSession.remove()
         testing.tearDown()
 
-    def test_failing_view(self):
-        from .views import my_view
+    def test_passing_view(self):
+        from ...views import public
         request = testing.DummyRequest()
-        info = my_view(request)
-        self.assertEqual(info.status_int, 500)
+        info = public.article(request)
+        self.assertEqual(info, {})
