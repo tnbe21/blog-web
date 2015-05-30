@@ -13,10 +13,10 @@ from pyramid.scripts.common import parse_vars
 
 from ..models import (
     DBSession,
-    Article,
-    AdminUser,
     Base,
     )
+from ..models.article import Article
+from ..models.admin_user import AdminUser
 
 
 def usage(argv):
