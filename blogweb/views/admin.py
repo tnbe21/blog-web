@@ -4,6 +4,7 @@ from ..models import (
     DBSession
     )
 
+
 @view_config(route_name='admin_login', renderer='blogweb:templates/admin/login.pt')
 def admin_login(request):
     print "hello admin login"

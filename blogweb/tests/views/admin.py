@@ -5,6 +5,7 @@ from pyramid import testing
 
 from ...models import DBSession
 
+
 class TestAdminLoginSuccessCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
@@ -25,6 +26,7 @@ class TestAdminLoginSuccessCondition(unittest.TestCase):
         request = testing.DummyRequest()
         info = admin.admin_login(request)
         self.assertEqual(info, {})
+
 
 class TestAdminLogoutSuccessCondition(unittest.TestCase):
     def setUp(self):
@@ -47,6 +49,7 @@ class TestAdminLogoutSuccessCondition(unittest.TestCase):
         info = admin.admin_logout(request)
         self.assertEqual(info, {})
 
+
 class TestAdminHomeSuccessCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
@@ -67,6 +70,7 @@ class TestAdminHomeSuccessCondition(unittest.TestCase):
         request = testing.DummyRequest()
         info = admin.admin_home(request)
         self.assertEqual(info, {})
+
 
 class TestAdminUsersSuccessCondition(unittest.TestCase):
     def setUp(self):
@@ -89,6 +93,7 @@ class TestAdminUsersSuccessCondition(unittest.TestCase):
         info = admin.admin_users(request)
         self.assertEqual(info, {})
 
+
 class TestAdminUserAddSuccessCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
@@ -109,6 +114,7 @@ class TestAdminUserAddSuccessCondition(unittest.TestCase):
         request = testing.DummyRequest()
         info = admin.admin_user_add(request)
 
+
 class TestAdminUserEditSuccessCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
@@ -128,6 +134,7 @@ class TestAdminUserEditSuccessCondition(unittest.TestCase):
         from ...views import admin
         request = testing.DummyRequest()
         info = admin.admin_user_edit(request)
+
 
 class TestAdminArticlesSuccessCondition(unittest.TestCase):
     def setUp(self):
@@ -150,6 +157,7 @@ class TestAdminArticlesSuccessCondition(unittest.TestCase):
         info = admin.admin_articles(request)
         self.assertEqual(info, {})
 
+
 class TestAdminArticleAddSuccessCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
@@ -169,6 +177,7 @@ class TestAdminArticleAddSuccessCondition(unittest.TestCase):
         from ...views import admin
         request = testing.DummyRequest()
         info = admin.admin_article_add(request)
+
 
 class TestAdminArticleEditSuccessCondition(unittest.TestCase):
     def setUp(self):

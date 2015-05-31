@@ -8,6 +8,7 @@ from sqlalchemy import (
 
 from . import Base
 
+
 class AdminUser(Base):
     __tablename__ = 'admin_users'
     id = Column(Integer, primary_key=True)
@@ -15,5 +16,6 @@ class AdminUser(Base):
     password = Column(String)
     create_dt = Column(DateTime)
     update_dt = Column(DateTime)
+
 
 Index('admin_user_index', AdminUser.id, unique=True, mysql_length=255)

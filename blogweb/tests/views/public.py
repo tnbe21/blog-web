@@ -5,6 +5,7 @@ from pyramid import testing
 
 from ...models import DBSession
 
+
 class TestHomeSuccessCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
@@ -25,6 +26,7 @@ class TestHomeSuccessCondition(unittest.TestCase):
         request = testing.DummyRequest()
         info = public.home(request)
         self.assertEqual(info, {})
+
 
 class TestArticleSuccessCondition(unittest.TestCase):
     def setUp(self):

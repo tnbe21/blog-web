@@ -15,8 +15,6 @@ from ..models import (
     DBSession,
     Base,
     )
-from ..models.article import Article
-from ..models.admin_user import AdminUser
 
 
 def usage(argv):
