@@ -6,11 +6,19 @@ myBlogWebApp
 Getting Started
 ---------------
 
+(with python 2.7.10)
+
 - cd <directory containing this file>
 
-- $VENV/bin/python setup.py develop
+- virtualenv --no-site-packages env
 
-- $VENV/bin/initialize_blog-web_db development.ini
+- . env/bin/activate
+
+- easy_install pyramid
+
+- python setup.py develop
+
+- initialize_blog-web_db development.ini
 
 - $VENV/bin/pserve development.ini
 
