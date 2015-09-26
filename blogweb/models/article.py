@@ -1,23 +1,22 @@
+import time
+from datetime import datetime
+
 from sqlalchemy import (
     Column,
-    Index,
     Integer,
     String,
-    Text,
-    DateTime
+    Text
     )
 
 from . import Base
 
 
 class Article(Base):
-    __tablename__ = 'articles'
-    id = Column(Integer, primary_key=True)
-    title = Column(String)
-    body = Column(Text)
-    author = Column(String)
-    create_dt = Column(DateTime)
-    update_dt = Column(DateTime)
-
-
-Index('article_index', Article.id, unique=True, mysql_length=255)
+    __tablename__ = 'article'
+    article_id = Column(Integer, primary_key=True, autoincrement=False)
+    title = Column(String(50), nullable=False)
+    body = Column(Text, nullable=False)
+    # 0: DRAFT, 1: PUBLIC, 10: PRIVATE
+    status = Column(Integer, nullable=False)
+    create_dt = Column(Integer, nullable=False, default=int(time.mktime(datetime.now().timetuple())))
+    update_dt = Column(Integer, nullable=False, default=int(time.mktime(datetime.now().timetuple())))

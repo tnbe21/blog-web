@@ -17,6 +17,7 @@ requires = [
     'transaction',
     'zope.sqlalchemy',
     'waitress',
+    'mysql-python'
     ]
 
 setup(name='blog-web',
@@ -29,9 +30,9 @@ setup(name='blog-web',
         "Topic :: Internet :: WWW/HTTP",
         "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
         ],
-      author='',
+      author='tnbe21',
       author_email='',
-      url='',
+      url='http://tnbe21.com',
       keywords='web wsgi bfg pylons pyramid',
       packages=find_packages(),
       include_package_data=True,
