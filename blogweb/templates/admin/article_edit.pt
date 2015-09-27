@@ -4,18 +4,20 @@
   <div metal:fill-slot="content">
     <h1>admin article edit page</h1>
     <div tal:condition="article is None">
-      <form action="add">
+      <form method="POST" action="add">
         <p>title: <input type="text" name="title" value=""></p>
         <p>body: <input type="text" name="body" value=""></p>
         <p>status: <input type="text" name="status" value=""></p>
+        <p><input type="submit" value="add"></p>
       </form>
     </div>
     <div tal:condition="article is not None">
-      <form action="edit">
+      <form method="POST" action="edit">
         <input type="hidden" name="article_id" value="${article.article_id}">
-        <p>title: <input type="text" name="title" value="${article.title}"></p>
-        <p>body: <input type="text" name="body" value="${article.body}"></p>
+        <p>title: <input type="text" name="title" value="${unicode(article.title, 'utf-8')}"></p>
+        <p>body: <input type="text" name="body" value="${unicode(article.body, 'utf-8')}"></p>
         <p>status: <input type="text" name="status" value="${article.status}"></p>
+        <p><input type="submit" value="edit"></p>
       </form>
     </div>
   </div>

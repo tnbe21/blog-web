@@ -1,6 +1,7 @@
 import transaction
 
 from pyramid.view import view_config
+from pyramid.httpexceptions import HTTPFound
 
 from ...models import DBSession
 from ...models.article import Article
@@ -18,15 +19,21 @@ def edit_view(request):
 @view_config(route_name='admin_article_add')
 def add(request):
     with transaction.manager:
-        new_article = Article()
-        new_article.article_id = DBSession.query(Article).count() + 1;
-        new_article.title = request.params.get('title')
-        new_article.body = request.params.get('body')
-        new_article.status = request.params.get('status')
-        DBSession.add(new_article)
-        return {}
+        article = Article()
+        article.article_id = DBSession.query(Article).count() + 1
+        article.title = request.params.get('title')
+        article.body = request.params.get('body')
+        article.status = request.params.get('status')
+        DBSession.add(article)
+        return HTTPFound(location='/rfwt4w3gtibjqhaljgalkjkl30va/admin/articles')
 
 @view_config(route_name='admin_article_edit')
 def edit(request):
     with transaction.manager:
-        return {}
+        article_id = request.params.get('article_id')
+        article = DBSession.query(Article).filter_by(article_id=article_id).first()
+        article.title = request.params.get('title')
+        article.body = request.params.get('body')
+        article.status = request.params.get('status')
+        DBSession.add(article)
+        return HTTPFound(location='/rfwt4w3gtibjqhaljgalkjkl30va/admin/articles')
