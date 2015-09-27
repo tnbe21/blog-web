@@ -16,6 +16,18 @@ class TestAdminArticlesSuccessCondition(unittest.TestCase):
         self.assertEqual(info, {})
 
 
+class TestAdminArticleEditViewSuccessCondition(unittest.TestCase):
+    def setUp(self):
+        self.config = testing.setUp()
+
+    def tearDown(self):
+        testing.tearDown()
+
+    def test_passing_view(self):
+        from ....views.admin import article
+        request = testing.DummyRequest()
+
+
 class TestAdminArticleAddSuccessCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
@@ -26,8 +38,6 @@ class TestAdminArticleAddSuccessCondition(unittest.TestCase):
     def test_passing_view(self):
         from ....views.admin import article
         request = testing.DummyRequest()
-        info = article.add(request)
-        self.assertEqual(info, {})
 
 
 class TestAdminArticleEditSuccessCondition(unittest.TestCase):
@@ -40,6 +50,3 @@ class TestAdminArticleEditSuccessCondition(unittest.TestCase):
     def test_passing_view(self):
         from ....views.admin import article
         request = testing.DummyRequest()
-        info = article.edit(request)
-        self.assertEqual(info, {})
-

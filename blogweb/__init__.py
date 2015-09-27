@@ -33,8 +33,9 @@ def main(global_config, **settings):
     config.add_route('admin_user_edit', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/user/{id}/edit')
 
     config.add_route('admin_articles', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/articles')
+    config.add_route('admin_article_edit_view', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/edit_view')
     config.add_route('admin_article_add', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/add')
-    config.add_route('admin_article_edit', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/{id}/edit')
+    config.add_route('admin_article_edit', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/edit')
 
     config.scan()
     return config.make_wsgi_app()
