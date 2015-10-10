@@ -13,13 +13,13 @@ from . import Base
 
 class AdminUser(Base):
     __tablename__ = 'admin_user'
-    admin_user_id = Column(Integer, primary_key=True, autoincrement=False)
-    name = Column(String(30), nullable=False)
+    name = Column(String(30), primary_key=True, nullable=False)
     password = Column(Text, nullable=False)
-    create_dt = Column(Integer, nullable=False, default=int(time.mktime(datetime.now().timetuple())))
-    update_dt = Column(Integer, nullable=False, default=int(time.mktime(datetime.now().timetuple())))
+    create_dt = Column(Integer, nullable=False)
+    update_dt = Column(Integer, nullable=False)
 
-    def __init__(self, admin_user_id, name, password):
-        self.admin_user_id = admin_user_id
+    def __init__(self, name, password):
         self.name = name
         self.password = password
+        self.create_dt = int(time.mktime(datetime.now().timetuple()))
+        self.update_dt = int(time.mktime(datetime.now().timetuple()))

@@ -1,5 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="load: ../common.pt">
-  <div metal:fill-slot="content">admin users page</div>
+  <div metal:fill-slot="content">article detail</div>
 </html>

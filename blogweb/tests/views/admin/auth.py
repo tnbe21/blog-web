@@ -1,20 +1,7 @@
 import unittest
 
 from pyramid import testing
-
-
-class TestAdminHomeSuccessCondition(unittest.TestCase):
-    def setUp(self):
-        self.config = testing.setUp()
-
-    def tearDown(self):
-        testing.tearDown()
-
-    def test_passing_view(self):
-        from ....views.admin import home
-        request = testing.DummyRequest()
-        info = home.home(request)
-        self.assertEqual(info, {})
+from pyramid.httpexceptions import HTTPFound
 
 
 class TestAdminLoginSuccessCondition(unittest.TestCase):
@@ -25,9 +12,9 @@ class TestAdminLoginSuccessCondition(unittest.TestCase):
         testing.tearDown()
 
     def test_passing_view(self):
-        from ....views.admin import home
+        from ....views.admin import auth
         request = testing.DummyRequest()
-        info = home.login(request)
+        info = auth.login(request)
         self.assertEqual(info, {})
 
 
@@ -39,7 +26,6 @@ class TestAdminLogoutSuccessCondition(unittest.TestCase):
         testing.tearDown()
 
     def test_passing_view(self):
-        from ....views.admin import home
+        from ....views.admin import auth
         request = testing.DummyRequest()
-        info = home.logout(request)
-        self.assertEqual(info, {})
+        info = auth.logout(request)

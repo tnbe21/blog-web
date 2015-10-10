@@ -2,7 +2,7 @@ import unittest
 
 from pyramid import testing
 
-class TestAdminArticlesSuccessCondition(unittest.TestCase):
+class TestAdminArticleIndexSuccessCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
 
@@ -16,7 +16,20 @@ class TestAdminArticlesSuccessCondition(unittest.TestCase):
         self.assertEqual(info, {})
 
 
-class TestAdminArticleEditViewSuccessCondition(unittest.TestCase):
+class TestAdminArticleAddFormSuccessCondition(unittest.TestCase):
+    def setUp(self):
+        self.config = testing.setUp()
+
+    def tearDown(self):
+        testing.tearDown()
+
+    def test_passing_view(self):
+        from ....views.admin import article
+        request = testing.DummyRequest()
+        info = article.add_form(request)
+
+
+class TestAdminArticleAddSuccessCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
 
@@ -28,7 +41,7 @@ class TestAdminArticleEditViewSuccessCondition(unittest.TestCase):
         request = testing.DummyRequest()
 
 
-class TestAdminArticleAddSuccessCondition(unittest.TestCase):
+class TestAdminArticleEditFormSuccessCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
 

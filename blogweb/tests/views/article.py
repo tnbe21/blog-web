@@ -2,7 +2,7 @@ import unittest
 
 from pyramid import testing
 
-class TestHomeSuccessCondition(unittest.TestCase):
+class TestArticleIndexSuccessCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
 
@@ -10,13 +10,13 @@ class TestHomeSuccessCondition(unittest.TestCase):
         testing.tearDown()
 
     def test_passing_view(self):
-        from ...views import public
+        from ...views import article
         request = testing.DummyRequest()
-        info = public.home(request)
+        info = article.index(request)
         self.assertEqual(info, {})
 
 
-class TestArticleSuccessCondition(unittest.TestCase):
+class TestArticleDetailSuccessCondition(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
 
@@ -24,7 +24,7 @@ class TestArticleSuccessCondition(unittest.TestCase):
         testing.tearDown()
 
     def test_passing_view(self):
-        from ...views import public
+        from ...views import article
         request = testing.DummyRequest()
-        info = public.article(request)
+        info = article.detail(request)
         self.assertEqual(info, {})

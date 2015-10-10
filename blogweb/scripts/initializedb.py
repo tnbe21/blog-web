@@ -40,4 +40,4 @@ def main(argv=sys.argv):
     DBSession.configure(bind=engine)
     Base.metadata.create_all(engine)
     with transaction.manager:
-        DBSession.add(AdminUser(1, 'tnbe21', 'password'))
+        DBSession.add(AdminUser('tanabe_taichi', 'password'))

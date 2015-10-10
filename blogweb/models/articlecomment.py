@@ -19,5 +19,9 @@ class ArticleComment(Base):
     author = Column(String(30), nullable=False, default='')
     # 1: PUBLIC, 10: PRIVATE
     status = Column(Integer, nullable=False)
-    create_dt = Column(Integer, nullable=False, default=int(time.mktime(datetime.now().timetuple())))
-    update_dt = Column(Integer, nullable=False, default=int(time.mktime(datetime.now().timetuple())))
+    create_dt = Column(Integer, nullable=False)
+    update_dt = Column(Integer, nullable=False)
+
+    def __init__(self):
+        self.create_dt = int(time.mktime(datetime.now().timetuple()))
+        self.update_dt = int(time.mktime(datetime.now().timetuple()))

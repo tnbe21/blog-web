@@ -21,23 +21,18 @@ def main(global_config, **settings):
 
     config.add_static_view('static', 'static', cache_max_age = 3600)
 
-    config.add_route('home', '/')
-    config.add_route('article', '/article/{id}')
+    config.add_route('article_index', '/')
+    config.add_route('article_detail', '/article')
 
     config.add_route('admin_login', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/login')
     config.add_route('admin_logout', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/logout')
-    config.add_route('admin_home', '/rfwt4w3gtibjqhaljgalkjkl30va/admin')
 
-    config.add_route('admin_users', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/users')
-    config.add_route('admin_user_add', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/user/add')
-    config.add_route('admin_user_edit', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/user/{id}/edit')
+    config.add_route('admin_article_index', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/index')
 
-    config.add_route('admin_articles', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/articles')
-
-    config.add_route('admin_article_add_view', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/add_view')
+    config.add_route('admin_article_add_form', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/add_form')
     config.add_route('admin_article_add', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/add')
 
-    config.add_route('admin_article_edit_view', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/edit_view')
+    config.add_route('admin_article_edit_form', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/edit_form')
     config.add_route('admin_article_edit', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/edit')
 
     config.scan()
