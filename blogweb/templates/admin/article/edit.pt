@@ -2,7 +2,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="load: ../../common.pt">
   <div metal:fill-slot="content">
-    <h1>article edit</h1>
+    <h2>article edit</h2>
 
     <form method="POST" action="edit">
       <input type="hidden" name="article_id" value="${article.article_id}">

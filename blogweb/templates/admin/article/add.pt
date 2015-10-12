@@ -2,7 +2,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="load: ../../common.pt">
   <div metal:fill-slot="content">
-    <h1>article add</h1>
+    <h2>article add</h2>
 
     <form method="POST" action="add">
       <p>title: <input type="text" name="title" value=""></p>

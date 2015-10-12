@@ -1,5 +1,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="load: ../common.pt">
-  <div metal:fill-slot="content">article detail</div>
+  <div metal:fill-slot="content">
+    <article>
+      <h2>${unicode(article.title, 'utf-8')}</h2>
+      <p>${unicode(article.body, 'utf-8')}</p>
+    </article>
+  </div>
 </html>

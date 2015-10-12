@@ -22,7 +22,7 @@ def main(global_config, **settings):
     config.add_static_view('static', 'static', cache_max_age = 3600)
 
     config.add_route('article_index', '/')
-    config.add_route('article_detail', '/article')
+    config.add_route('article_detail', '/article/{article_id}')
 
     config.add_route('admin_login', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/login')
     config.add_route('admin_logout', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/logout')
@@ -32,7 +32,7 @@ def main(global_config, **settings):
     config.add_route('admin_article_add_form', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/add_form')
     config.add_route('admin_article_add', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/add')
 
-    config.add_route('admin_article_edit_form', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/edit_form')
+    config.add_route('admin_article_edit_form', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/edit_form/{article_id}')
     config.add_route('admin_article_edit', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/edit')
 
     config.scan()

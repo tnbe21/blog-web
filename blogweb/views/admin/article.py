@@ -30,7 +30,7 @@ def add(request):
 
 @view_config(route_name='admin_article_edit_form', renderer='blogweb:templates/admin/article/edit.pt')
 def edit_form(request):
-    article_id = request.params.get('article_id')
+    article_id = request.matchdict['article_id']
     article = DBSession.query(Article).filter_by(article_id=article_id).first()
     return dict(article=article)
 
