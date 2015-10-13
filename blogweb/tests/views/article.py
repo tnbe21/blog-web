@@ -26,5 +26,3 @@ class TestArticleDetailSuccessCondition(unittest.TestCase):
     def test_passing_view(self):
         from ...views import article
         request = testing.DummyRequest()
-        info = article.detail(request)
-        self.assertEqual(info, {})
