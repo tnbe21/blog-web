@@ -19,7 +19,6 @@ from ..models import (
 # import models you want to initialize (at DB)
 #from ..models.article import Article
 #from ..models.adminuser import AdminUser
-#from ..models.articlecomment import ArticleComment
 
 
 def usage(argv):
