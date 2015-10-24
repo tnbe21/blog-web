@@ -18,6 +18,7 @@ from ..models import (
 
 # import models you want to initialize (at DB)
 #from ..models.article import Article
+from ..models.articletag import ArticleTag
 #from ..models.adminuser import AdminUser
 
 
@@ -38,5 +39,5 @@ def main(argv=sys.argv):
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
     Base.metadata.create_all(engine)
-    with transaction.manager:
-        DBSession.add(AdminUser('tanabe_taichi', 'password'))
+#    with transaction.manager:
+#        DBSession.add(AdminUser('tanabe_taichi', 'password'))

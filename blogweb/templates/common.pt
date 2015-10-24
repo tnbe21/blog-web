@@ -23,7 +23,17 @@
     <div id="current_post">
       <h3>current posts</h3>
       <ul>
-        <li><a href="">title1 (yyyy-MM-dd)</a>
+        <li><a href="">title1</a></li>
+        <li><a href="">title2</a></li>
+      </ul>
+    </div>
+    <div id="tags">
+      <h3>tags</h3>
+      <ul>
+        <li><a href="">AWS(10)</a></li>
+        <li><a href="">GCP(10)</a></li>
+        <li><a href="">heroku(20)</a></li>
+        <li><a href="">ガジェット(50)</a></li>
       </ul>
     </div>
     <div id="calendar">
