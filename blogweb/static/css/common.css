@@ -1,0 +1,17 @@
+body {
+  padding: 1% 5%;
+}
+
+#contents {
+  float: left;
+  width: 75%;
+}
+
+#sidebar {
+  float: right;
+  width: 25%;
+}
+
+footer {
+  clear: both;
+}
