@@ -13,22 +13,25 @@
 
 <body>
   <header>
-  <h1>blog</h1>
-  <hr>
+    <h1>blog</h1>
+    <hr>
   </header>
+
   <div id="main">
     <div metal:define-slot="content"></div>
   </div>
+
   <div id="sidebar">
-    <div id="current_post">
-      <h3>current posts</h3>
+    <div id="current">
+      <h3>current</h3>
       <ul>
         <li><a href="">title1</a></li>
         <li><a href="">title2</a></li>
       </ul>
     </div>
-    <div id="tags">
-      <h3>tags</h3>
+
+    <div id="tag">
+      <h3>tag</h3>
       <ul>
         <li><a href="">AWS(10)</a></li>
         <li><a href="">GCP(10)</a></li>
@@ -36,10 +39,12 @@
         <li><a href="">ガジェット(50)</a></li>
       </ul>
     </div>
+
     <div id="calendar">
       <h3>calendar</h3>
     </div>
   </div>
+
   <footer>
     <hr>
     Copyright &copy; tnbe21. All Rights Reserved.

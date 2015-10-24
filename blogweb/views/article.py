@@ -5,6 +5,10 @@ from ..models.article import Article
 
 @view_config(route_name='article_index', renderer='blogweb:templates/article/index.pt')
 def index(request):
+    page = request.params.get('page')
+    tag = request.params.get('tag')
+    year = request.params.get('year')
+    month = request.params.get('month')
     return {}
 
 @view_config(route_name='article_detail', renderer='blogweb:templates/article/detail.pt')
