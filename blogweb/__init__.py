@@ -11,15 +11,15 @@ def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
     engine = engine_from_config(settings, 'sqlalchemy.')
-    DBSession.configure(bind = engine)
+    DBSession.configure(bind=engine)
     Base.metadata.bind = engine
 
-    config = Configurator(settings = settings)
+    config = Configurator(settings=settings)
 
     config.include('pyramid_chameleon')
     config.include('pyramid_tm')
 
-    config.add_static_view('static', 'static', cache_max_age = 3600)
+    config.add_static_view('static', 'static', cache_max_age=3600)
 
     config.add_route('article_index', '/')
     config.add_route('article_detail', '/article/{article_id}')
@@ -34,6 +34,8 @@ def main(global_config, **settings):
 
     config.add_route('admin_article_edit_form', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/edit_form/{article_id}')
     config.add_route('admin_article_edit', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/edit')
+
+    config.add_settings(limit_per_page=3)
 
     config.scan()
     return config.make_wsgi_app()
