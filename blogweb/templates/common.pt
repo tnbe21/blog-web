@@ -9,6 +9,8 @@
   <title>tnbe21 blog</title>
   <link rel="shortcut icon" href="${request.static_url('blogweb:static/img/pyramid-16x16.png')}">
   <link href="${request.static_url('blogweb:static/css/common.css')}" rel="stylesheet">
+  <script src="${request.static_url('blogweb:static/js/jquery-1.11.3.min.js')}"></script>
+  <script src="${request.static_url('blogweb:static/js/main.js')}"></script>
 </head>
 
 <body>

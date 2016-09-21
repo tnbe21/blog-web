@@ -6,7 +6,7 @@ from sqlalchemy import (
     Integer,
     String,
     Text
-    )
+)
 
 from . import Base
 

@@ -1,7 +1,11 @@
+import time
+from datetime import datetime
+
 from pyramid.view import view_config
 
 from ..models import DBSession
 from ..models.article import Article
+
 
 @view_config(route_name='article_index', renderer='blogweb:templates/article/index.pt')
 def index(request):
@@ -22,11 +26,12 @@ def index(request):
 
     if from_dt > 0 and to_dt > 0:
         create_dt_filter_query = "create_dt >= %d and create_dt <= %d" % (from_dt, to_dt)
-        article = DBSession.query(Article).filter(create_dt_filter_query).order_by(Article.article_id.desc())[page:(page + limit_per_page - 1)]
+        articles = DBSession.query(Article).filter(create_dt_filter_query).order_by(Article.article_id.desc())[page:(page + limit_per_page - 1)]
     else:
-        article = DBSession.query(Article).order_by(Article.article_id.desc())[page:(page + limit_per_page - 1)]
+        articles = DBSession.query(Article).order_by(Article.article_id.desc())[page:(page + limit_per_page - 1)]
 
     return {}
+
 
 @view_config(route_name='article_detail', renderer='blogweb:templates/article/detail.pt')
 def detail(request):

@@ -1,4 +1,6 @@
 #!/bin/sh
 
-source ./env/bin/activate
-./env/bin/pserve development.ini --reload
+envMode=${1}
+pass=${2}
+. ./env/bin/activate
+./env/bin/pserve ${envMode}.ini --reload pass=${pass}
