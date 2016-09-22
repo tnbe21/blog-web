@@ -1,6 +1,6 @@
 #!/bin/sh
 
-envMode=${1}
+initFile=${1}
 pass=${2}
 . ./env/bin/activate
-./env/bin/pserve ${envMode}.ini --reload pass=${pass}
+nohup pserve ${initFile} --reload pass=${pass} >out.log 2>err.log &
