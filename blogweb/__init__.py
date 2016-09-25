@@ -37,7 +37,5 @@ def main(global_config, **settings):
     config.add_route('admin_article_edit_form', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/edit_form/{article_id}')
     config.add_route('admin_article_edit', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/edit')
 
-    config.add_settings(limit_per_page=3)
-
     config.scan()
     return config.make_wsgi_app()
