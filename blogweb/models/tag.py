@@ -3,17 +3,17 @@ from datetime import datetime
 
 from sqlalchemy import (
     Column,
-    ForeignKey,
-    Integer
+    Integer,
+    String
 )
 
 from . import Base
 
 
-class ArticleTag(Base):
-    __tablename__ = 'article_tag'
-    article_id = Column(Integer, ForeignKey('article.article_id'), primary_key=True, autoincrement=False)
-    tag_id = Column(Integer, ForeignKey('tag.tag_id'), primary_key=True, autoincrement=False)
+class Tag(Base):
+    __tablename__ = 'tag'
+    tag_id = Column(Integer, primary_key=True, autoincrement=False)
+    name = Column(String(20))
     create_dt = Column(Integer, nullable=False)
     update_dt = Column(Integer, nullable=False)
 

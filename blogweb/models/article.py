@@ -7,8 +7,12 @@ from sqlalchemy import (
     String,
     Text
 )
+from sqlalchemy.orm import relation
 
 from . import Base, DBSession
+from articletag import ArticleTag
+
+article_tag = ArticleTag.__table__
 
 
 class Article(Base):
@@ -20,6 +24,8 @@ class Article(Base):
     status = Column(Integer, nullable=False)
     create_dt = Column(Integer, nullable=False)
     update_dt = Column(Integer, nullable=False)
+
+    tags = relation('Tag', secondary=article_tag, backref='article')
 
     def __init__(self):
         self.create_dt = int(time.mktime(datetime.now().timetuple()))

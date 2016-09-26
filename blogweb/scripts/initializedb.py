@@ -18,7 +18,8 @@ from ..models import (
 
 # import models you want to initialize (at DB)
 #from ..models.article import Article
-from ..models.articletag import ArticleTag
+#from ..models.tag import Tag
+#from ..models.articletag import ArticleTag
 #from ..models.adminuser import AdminUser
 
 
