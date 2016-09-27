@@ -20,3 +20,6 @@ class Tag(Base):
     def __init__(self):
         self.create_dt = int(time.mktime(datetime.now().timetuple()))
         self.update_dt = int(time.mktime(datetime.now().timetuple()))
+
+    def list(self):
+        return DBSession.query(Tag)
