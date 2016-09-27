@@ -4,6 +4,7 @@ from datetime import datetime
 from sqlalchemy import (
     Column,
     Integer,
+    SmallInteger,
     String,
     Text
 )
@@ -21,7 +22,7 @@ class Article(Base):
     title = Column(String(50), nullable=False)
     body = Column(Text, nullable=False)
     # 0: DRAFT, 1: PUBLIC, 10: PRIVATE
-    status = Column(Integer, nullable=False)
+    status = Column(SmallInteger, nullable=False)
     create_dt = Column(Integer, nullable=False)
     update_dt = Column(Integer, nullable=False)
 
