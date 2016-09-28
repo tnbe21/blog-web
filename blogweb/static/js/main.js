@@ -1,9 +1,5 @@
 $(function() {
-  $.get('/article_tag/list', function(err, res) {
-    if (err) {
-      console.log(err);
-      return;
-    }
+  $.get('/tag/list', function(res) {
     console.log("success: " + JSON.stringify(res));
   });
 });
