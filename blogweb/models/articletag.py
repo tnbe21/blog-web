@@ -38,5 +38,4 @@ class ArticleTag(Base):
         from article import Article
 
         query = DBSession.query(ArticleTag.name, func.count(ArticleTag.name).label('article_count'))
-        list = query.join(Article).filter(Article.status == 1).group_by(ArticleTag.name).all()
-        return [{'name': tag.name, 'articleCount': tag.article_count} for tag in list]
+        return query.join(Article).filter(Article.status == 1).group_by(ArticleTag.name).order_by('article_count desc').all()

@@ -49,9 +49,5 @@ class Article(Base):
         return query.order_by(Article.article_id.desc())[page:(page + LIMIT_PER_PAGE - 1)]
 
     def current_title_list(self):
-        list = DBSession.query(Article.article_id, Article.title)\
+        return DBSession.query(Article.article_id, Article.title)\
             .filter(Article.status == 1).order_by(Article.article_id.desc()).limit(5)
-        for a in list:
-            print ('a: %s %s' % (a.article_id, a.title))
-
-        return [{'id': article.article_id, 'title': article.title} for article in list]

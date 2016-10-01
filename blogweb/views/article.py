@@ -36,4 +36,5 @@ def detail(request):
 
 @view_config(route_name='current_title_list', renderer='json')
 def current_title_list(request):
-    return Article().current_title_list()
+    list = Article().current_title_list()
+    return [{'id': article.article_id, 'title': article.title} for article in list]
