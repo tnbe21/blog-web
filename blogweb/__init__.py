@@ -24,6 +24,7 @@ def main(global_config, **settings):
     config.add_route('article_index', '/')
     config.add_route('article_detail', '/article/{article_id}')
 
+    config.add_route('current_title_list', '/current_title_list')
     config.add_route('tag_list', '/tag/list')
 
     config.add_route('admin_login', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/login')

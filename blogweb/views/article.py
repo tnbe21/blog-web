@@ -32,3 +32,8 @@ def detail(request):
     article_id = request.matchdict['article_id']
     article = Article().get(article_id)
     return dict(article=article)
+
+
+@view_config(route_name='current_title_list', renderer='json')
+def current_title_list(request):
+    return Article().current_title_list()
