@@ -2,6 +2,7 @@ import time
 from datetime import datetime
 
 from sqlalchemy import (
+    BigInteger,
     Column,
     ForeignKey,
     Integer,
@@ -16,8 +17,8 @@ class ArticleTag(Base):
     __table_args__ = {'mysql_engine': 'InnoDB'}
     article_id = Column(Integer, ForeignKey('article.article_id', ondelete='CASCADE'), primary_key=True, autoincrement=False)
     name = Column(String(20), primary_key=True, index=True)
-    create_dt = Column(Integer, nullable=False)
-    update_dt = Column(Integer, nullable=False)
+    create_dt = Column(BigInteger, nullable=False)
+    update_dt = Column(BigInteger, nullable=False)
 
     def __init__(self):
         self.create_dt = int(time.mktime(datetime.now().timetuple()))

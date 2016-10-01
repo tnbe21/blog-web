@@ -2,6 +2,7 @@ import time
 from datetime import datetime
 
 from sqlalchemy import (
+    BigInteger,
     Column,
     Integer,
     SmallInteger,
@@ -24,8 +25,8 @@ class Article(Base):
     body = Column(Text, nullable=False)
     # 0: DRAFT, 1: PUBLIC, 10: DELETED
     status = Column(SmallInteger, nullable=False)
-    create_dt = Column(Integer, nullable=False)
-    update_dt = Column(Integer, nullable=False)
+    create_dt = Column(BigInteger, nullable=False)
+    update_dt = Column(BigInteger, nullable=False)
 
     tags = relationship('ArticleTag')
 
