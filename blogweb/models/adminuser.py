@@ -13,6 +13,7 @@ from . import Base
 
 class AdminUser(Base):
     __tablename__ = 'admin_user'
+    __table_args__ = {'mysql_engine': 'InnoDB'}
     name = Column(String(30), primary_key=True, nullable=False)
     password = Column(Text, nullable=False)
     create_dt = Column(Integer, nullable=False)

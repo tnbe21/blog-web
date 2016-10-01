@@ -3,6 +3,7 @@ Getting Started
 
 with
 * Python 2.7.10 (installing virtualenv)
+* Pyramid 1.7b2
 * MySQL 5.6
 
 First,
