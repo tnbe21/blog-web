@@ -1,6 +1,7 @@
 #!/bin/sh
 
 initFile=${1}
-pass=${2}
+mysql_pass=${2}
+admin_root_path=${3}
 . ./env/bin/activate
-nohup pserve ${initFile} --reload pass=${pass} >out.log 2>err.log &
+nohup pserve ${initFile} --reload mysql_pass=${2} admin_root_path=${3} >out.log 2>err.log &

@@ -27,16 +27,18 @@ def main(global_config, **settings):
     config.add_route('current_title_list', '/current_title_list')
     config.add_route('tag_list', '/tag/list')
 
-    config.add_route('admin_login', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/login')
-    config.add_route('admin_logout', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/logout')
+    admin_root_path = '/%s/admin' % settings['admin.root_path']
+    print('admin_root_path: %s' % admin_root_path)
+    config.add_route('admin_login', '%s/login' % admin_root_path)
+    config.add_route('admin_logout', '%s/logout' % admin_root_path)
 
-    config.add_route('admin_article_index', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/index')
+    config.add_route('admin_article_index', '%s/admin/article/index' % admin_root_path)
 
-    config.add_route('admin_article_add_form', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/add_form')
-    config.add_route('admin_article_add', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/add')
+    config.add_route('admin_article_add_form', '%s/article/add_form' % admin_root_path)
+    config.add_route('admin_article_add', '%s/article/add' % admin_root_path)
 
-    config.add_route('admin_article_edit_form', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/edit_form/{article_id}')
-    config.add_route('admin_article_edit', '/rfwt4w3gtibjqhaljgalkjkl30va/admin/article/edit')
+    config.add_route('admin_article_edit_form', '%s/article/edit_form/{article_id}' % admin_root_path)
+    config.add_route('admin_article_edit', '%s/article/edit' % admin_root_path)
 
     config.scan()
     return config.make_wsgi_app()
