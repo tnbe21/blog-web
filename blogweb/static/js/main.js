@@ -19,10 +19,10 @@ $(function() {
       return;
     }
     $.each(tags, function(i, tag) {
-      var articleLink = $('<a>').attr({
+      var $articleLink = $('<a>').attr({
         href: '/?tag=' + tag.name
       }).append(tag.name + '(' + tag.articleCount + ')');
-      var $li = $('<li>').append(articleLink);
+      var $li = $('<li>').append($articleLink);
       $('#tag ul').append($li);
     });
   });

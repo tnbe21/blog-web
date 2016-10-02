@@ -32,6 +32,7 @@
     <div id="tag">
       <h3>tag</h3>
       <ul></ul>
+      <div class="float_clear"></div>
     </div>
 
     <div id="calendar">
