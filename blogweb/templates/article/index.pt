@@ -1,5 +1,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="load: ../common.pt">
-  <div metal:fill-slot="content">article index</div>
+  <div metal:fill-slot="content">
+    <div tal:repeat="article articles">
+      <p tal:define="datetime import: datetime.datetime" class="article_date_head">
+        ${datetime.fromtimestamp(article.create_dt).strftime('%Y-%m-%d')}
+      </p>
+      <h2><a href="article/${article.article_id}">${article.title}</a></h2>
+    </div>
+  </div>
 </html>
