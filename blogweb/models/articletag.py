@@ -39,3 +39,6 @@ class ArticleTag(Base):
 
         query = DBSession.query(ArticleTag.name, func.count(ArticleTag.name).label('article_count'))
         return query.join(Article).filter(Article.status == 1).group_by(ArticleTag.name).order_by('article_count desc').all()
+
+    def findByName(self, name):
+        return DBSession.query(ArticleTag).filter(ArticleTag.name == name).all()

@@ -9,7 +9,7 @@ from ..models.article import Article
 @view_config(route_name='article_index', renderer='blogweb:templates/article/index.pt')
 def index(request):
     page = 0 if request.params.get('page') is None else int(request.params.get('page'))
-    tag = '' if request.params.get('tag') is None else request.params.get('get')
+    tag = request.params.get('tag')
     year = request.params.get('year')
     month = request.params.get('month')
     from_dt = 0

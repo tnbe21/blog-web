@@ -39,13 +39,21 @@ class Article(Base):
             % (self.article_id, self.title, self.create_dt, self.update_dt)
 
     def get(self, id):
-        return DBSession.query(Article).filter_by(article_id=id).first()
+        return DBSession.query(Article).filter(Article.article_id == id).first()
 
     def list(self, from_dt, to_dt, tag, page):
         LIMIT_PER_PAGE = 3
-        query = DBSession.query(Article).filter(Article.status == 1)
+        query = DBSession.query(Article)
+
+        if tag is not None:
+            article_ids = [article_tag.article_id for article_tag in ArticleTag().findByName(tag)]
+            query = query.filter(Article.article_id.in_(article_ids))
+
+        query = query.filter(Article.status == 1)
+
         if from_dt > 0 and to_dt > 0:
-            query.filter(Article.create_dt >= from_dt).filter(Article.create_dt <= to_dt)
+            query = query.filter(Article.create_dt >= from_dt).filter(Article.create_dt <= to_dt)
+
         return query.order_by(Article.article_id.desc())[page:(page + LIMIT_PER_PAGE - 1)]
 
     def current_title_list(self):
