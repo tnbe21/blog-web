@@ -4,7 +4,7 @@
   <div metal:fill-slot="content">
     <div tal:repeat="article articles">
       <p tal:define="datetime import: datetime.datetime" class="article_date_head">
-        ${datetime.fromtimestamp(article.create_dt).strftime('%Y-%m-%d')}
+        ${datetime.fromtimestamp(article.create_dt).strftime('%Y-%m-%d %H:%M')}
       </p>
       <h2><a href="article/${article.article_id}">${article.title}</a></h2>
     </div>

@@ -3,6 +3,9 @@
       metal:use-macro="load: ../common.pt">
   <div metal:fill-slot="content">
     <article>
+      <p tal:define="datetime import: datetime.datetime" class="article_date_head">
+        ${datetime.fromtimestamp(article.create_dt).strftime('%Y-%m-%d %H:%M')}
+      </p>
       <h2>${unicode(article.title, 'utf-8')}</h2>
       <p>${unicode(article.body, 'utf-8')}</p>
     </article>
