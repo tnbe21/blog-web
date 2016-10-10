@@ -13,6 +13,15 @@ $(function() {
     });
   });
 
+
+  $.get('/monthly_map', function(monthlyMap) {
+    if (!monthlyMap) {
+      $('#monthly').html('');
+      return;
+    }
+    console.log("hogehoge");
+  });
+
   $.get('/tag/list', function(tags) {
     if (!tags) {
       $('#tag').html('');
