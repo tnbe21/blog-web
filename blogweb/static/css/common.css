@@ -35,6 +35,10 @@ a {
   width: 25%;
 }
 
+#current a {
+  text-decoration: underline;
+}
+
 #tag {
   word-wrap: break-word;
 }

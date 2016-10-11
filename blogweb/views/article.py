@@ -43,8 +43,8 @@ def current_title_list(request):
     return [{'id': article.article_id, 'title': article.title} for article in list]
 
 
-@view_config(route_name='monthly_map', renderer='json')
-def monthly_map(request):
+@view_config(route_name='yearly_map', renderer='json')
+def yearly_map(request):
     articles = Article().list(None, None, None, 0, None)
     map = {}
     for article in articles:

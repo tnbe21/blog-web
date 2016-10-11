@@ -25,7 +25,7 @@ def main(global_config, **settings):
     config.add_route('article_detail', '/article/{article_id}')
 
     config.add_route('current_title_list', '/current_title_list')
-    config.add_route('monthly_map', '/monthly_map')
+    config.add_route('yearly_map', '/yearly_map')
     config.add_route('tag_list', '/tag/list')
 
     admin_root_path = '/%s/admin' % settings['admin.root_path']

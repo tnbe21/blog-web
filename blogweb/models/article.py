@@ -23,6 +23,7 @@ class Article(Base):
     article_id = Column(Integer, primary_key=True, autoincrement=False)
     title = Column(String(50), nullable=False)
     body = Column(Text, nullable=False)
+    view_count = Column(Integer)
     # 0: DRAFT, 1: PUBLIC, 10: DELETED
     status = Column(SmallInteger, nullable=False)
     create_dt = Column(BigInteger, nullable=False)

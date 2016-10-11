@@ -14,12 +14,24 @@ $(function() {
   });
 
 
-  $.get('/monthly_map', function(monthlyMap) {
-    if (!monthlyMap) {
-      $('#monthly').html('');
+  $.get('/yearly_map', function(yearlyMap) {
+    if (!yearlyMap) {
+      $('#archive').html('');
       return;
     }
-    console.log("hogehoge");
+    $('#archive').append('<ul />');
+    $.each(yearlyMap, function(year, monthlyMap) {
+      var $li = $('<li />').append('▶' + year).append('<ul />');
+      $.each(monthlyMap, function(yearMonth, list) {
+        $li.find('ul').append($('<li />').append(yearMonth + '(' + list.length + ')'));
+      });
+      $('#archive ul').append($li);
+    });
+    $('#archive ul li').each(function(i, el) {
+      $(el).toggle();
+      if (i === 0) {
+      }
+    });
   });
 
   $.get('/tag/list', function(tags) {
