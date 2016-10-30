@@ -17,13 +17,15 @@ def index(request):
     month = request.params.get('month')
     from_dt = 0
     to_dt = 0
-    if year is not None:
-        if month is not None:
-            from_dt = int(time.mktime(datetime.datetime(year, month, 1)))
-            to_dt = int(datetime.datetime(year, month + 1, 1)) - 1
+    if request.params.get('year') is not None:
+        year = int(request.params.get('year'))
+        if request.params.get('month') is not None:
+            month = int(request.params.get('month'))
+            from_dt = int(time.mktime(datetime(year=year, month=month, day=1)))
+            to_dt = int(time.mktime(datetime(year=year, month=month + 1, day=1))) - 1
         else:
-            from_dt = int(time.mktime(datetime.datetime(year, 1, 1)))
-            to_dt = int(datetime.datetime(year + 1, 1, 1)) - 1
+            from_dt = int(time.mktime(datetime(year=year, month=1, day=1)))
+            to_dt = int(time.mktime(datetime(year=year + 1, month=1, day=1))) - 1
 
     articles = Article().list(from_dt, to_dt, tag, from_idx, to_idx)
 
@@ -43,9 +45,9 @@ def current_title_list(request):
     return [{'id': article.article_id, 'title': article.title} for article in list]
 
 
-@view_config(route_name='yearly_map', renderer='json')
-def yearly_map(request):
-    articles = Article().list(None, None, None, 0, None)
+@view_config(route_name='archive_maps', renderer='json')
+def archive_maps(request):
+    articles = Article().list(None, None, None, None, None)
     map = {}
     for article in articles:
         create_dt = datetime.fromtimestamp(article.create_dt)
@@ -54,9 +56,8 @@ def yearly_map(request):
         year_month_key = year + '-' + month
         if not map.has_key(year):
             map[year] = {}
-        if not map[year].has_key(year_month_key):
-            map[year][year_month_key] = []
-        month_list = map[year][year_month_key]
-        month_list.append(article.article_id)
+        if not map[year].has_key(month):
+            map[year][month] = 0
+        map[year][month] += 1
 
     return map

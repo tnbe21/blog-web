@@ -53,6 +53,13 @@ a {
   color: #777;
 }
 
+.archive_year_on:before {
+  content: "▼"
+}
+
+.archive_year_off:before {
+  content: "▶"
+}
 footer {
   clear: both;
   font-style: italic;

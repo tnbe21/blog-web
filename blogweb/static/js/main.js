@@ -14,23 +14,40 @@ $(function() {
   });
 
 
-  $.get('/yearly_map', function(yearlyMap) {
-    if (!yearlyMap) {
+  $.get('/archive_maps', function(maps) {
+    if (!maps) {
       $('#archive').html('');
       return;
     }
-    $('#archive').append('<ul />');
-    $.each(yearlyMap, function(year, monthlyMap) {
-      var $li = $('<li />').append('▶' + year).append('<ul />');
-      $.each(monthlyMap, function(yearMonth, list) {
-        $li.find('ul').append($('<li />').append(yearMonth + '(' + list.length + ')'));
+    $('#archive').append($('<ul />'));
+    $.each(maps, function(year, map) {
+      var $yearElem = $('<li />').addClass('archive_year_on').append(year).append($('<ul />'));
+      $.each(map, function(month, size) {
+        var $monthLink = $('<a />').attr('href', '/?year=' + parseInt(year) + '&month=' + parseInt(month)).append(year + '-' + month + '(' + size + ')');
+        var $monthElem = $('<li />').append($monthLink);
+        $monthElem.click(function(e) {
+          e.stopPropagation();
+        });
+        $yearElem.find('ul').append($monthElem);
       });
-      $('#archive ul').append($li);
+      $('#archive ul').append($yearElem);
     });
-    $('#archive ul li').each(function(i, el) {
-      $(el).toggle();
-      if (i === 0) {
+    $('#archive ul li.archive_year_on').each(function(i, yearElem) {
+      if (i !== 0) {
+        $(yearElem).removeClass('archive_year_on').addClass('archive_year_off');
+        $(yearElem).find('ul').toggle();
       }
+      $(yearElem).click(function() {
+        $(this).find('ul').toggle(function() {
+          if ($(this).is(':visible')) {
+            $(yearElem).removeClass('archive_year_off');
+            $(yearElem).addClass('archive_year_on');
+          } else {
+            $(yearElem).removeClass('archive_year_on');
+            $(yearElem).addClass('archive_year_off');
+          }
+        });
+      });
     });
   });
 
