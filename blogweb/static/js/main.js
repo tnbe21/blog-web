@@ -9,12 +9,12 @@ $(function() {
         href: '/article/' + article.id
       }).append(article.title);
       var $li = $('<li>').append(articleLink);
-      $('#current ul').append($li);
+      $('#current > ul').append($li);
     });
   });
 
 
-  $.get('/archive_maps', function(maps) {
+  $.get('/archive_list', function(maps) {
     if (!maps) {
       $('#archive').html('');
       return;
@@ -30,9 +30,9 @@ $(function() {
         });
         $yearElem.find('ul').append($monthElem);
       });
-      $('#archive ul').append($yearElem);
+      $('#archive > ul').append($yearElem);
     });
-    $('#archive ul li.archive_year_on').each(function(i, yearElem) {
+    $('#archive > ul > li').each(function(i, yearElem) {
       if (i !== 0) {
         $(yearElem).removeClass('archive_year_on').addClass('archive_year_off');
         $(yearElem).find('ul').toggle();

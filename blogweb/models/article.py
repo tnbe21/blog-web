@@ -59,3 +59,6 @@ class Article(Base):
     def current_title_list(self):
         return DBSession.query(Article.article_id, Article.title)\
             .filter(Article.status == 1).order_by(Article.article_id.desc()).limit(5)
+
+    def all_create_dt_list(self):
+        return DBSession.query(Article.create_dt).filter(Article.status == 1).order_by(Article.article_id.desc())
