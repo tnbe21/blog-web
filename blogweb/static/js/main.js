@@ -14,16 +14,19 @@ $(function() {
   });
 
 
-  $.get('/archive_list', function(maps) {
-    if (!maps) {
+  $.get('/archive_list', function(list) {
+    if (!list) {
       $('#archive').html('');
       return;
     }
     $('#archive').append($('<ul />'));
-    $.each(maps, function(year, map) {
+    $.each(list, function(i, yearMap) {
+      var year = yearMap.year;
       var $yearElem = $('<li />').addClass('archive_year_on').append(year).append($('<ul />'));
-      $.each(map, function(month, size) {
-        var $monthLink = $('<a />').attr('href', '/?year=' + parseInt(year) + '&month=' + parseInt(month)).append(year + '-' + month + '(' + size + ')');
+      $.each(yearMap.monthList, function(i, monthMap) {
+        var month = monthMap.month;
+        var count = monthMap.count;
+        var $monthLink = $('<a />').attr('href', '/?year=' + parseInt(year) + '&month=' + parseInt(month)).append(year + '-' + month + '(' + count + ')');
         var $monthElem = $('<li />').append($monthLink);
         $monthElem.click(function(e) {
           e.stopPropagation();

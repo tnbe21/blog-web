@@ -38,39 +38,33 @@ def detail(request):
 
 @view_config(route_name='current_title_list', renderer='json')
 def current_title_list(request):
-    list = Article().current_title_list()
-    return [{'id': article.article_id, 'title': article.title} for article in list]
+    # TODO set the cache
+    title_list = Article().current_title_list()
+    return [{'id': article.article_id, 'title': article.title} for article in title_list]
 
 
 @view_config(route_name='archive_list', renderer='json')
 def archive_list(request):
+    # TODO set the cache
     create_dt_list = Article().all_create_dt_list()
-    list = []
-    for e in create_dt_list:
+    archive_list = []
+    for e in sorted(create_dt_list, reverse=True):
         create_dt = datetime.fromtimestamp(e.create_dt)
         year = create_dt.strftime('%Y')
         month = create_dt.strftime('%m')
 
-        temp_yearly = None
-        for yearly in list:
-            if yearly is not None and year is yearly['year']:
-                temp_yearly = yearly
-        if temp_yearly is None:
-            temp_yearly = {}
-            temp_yearly['year'] = year
-            temp_yearly['monthlyList'] = []
-            list.append(temp_yearly)
-
-        temp_monthly = None
-        for monthly in temp_yearly['monthlyList']:
-            if monthly is not None and month is monthly['month']:
-                temp_monthly = monthly
-        if temp_monthly is None:
-            temp_monthly = {}
-            temp_monthly['month'] = month
-            temp_monthly['count'] = 1
-            temp_yearly['monthlyList'].append(temp_monthly)
+        year_dict_filtered = [_dict for _dict in archive_list if _dict['year'] == year]
+        year_dict = {}
+        if len(year_dict_filtered) == 0:
+            year_dict = {'year': year, 'monthList': []}
+            archive_list.append(year_dict)
         else:
-            temp_monthly['count'] += 1
+            year_dict = year_dict_filtered[0]
 
-    return list
+        month_dict_filtered = [_dict for _dict in year_dict['monthList'] if _dict['month'] == month]
+        if len(month_dict_filtered) == 0:
+            year_dict['monthList'].append({'month': month, 'count': 1})
+        else:
+            month_dict_filtered[0]['count'] += 1
+
+    return archive_list
